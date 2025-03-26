@@ -1,18 +1,18 @@
+import { useState } from "react";
 import TypingText from "./TypingText";
-import "./App.css"; // Import your styles
+import "./App.css";
 
 function App() {
+    const [showAbout, setShowAbout] = useState(false);
+
     return (
         <div className="main-page">
-            {/* Typing Animation */}
             <TypingText />
 
-            {/* Profile Picture */}
             <div className="profile-pic">
                 <img src="/icons/pfp.png" alt="Alastaire Balin" />
             </div>
 
-            {/* Social Links */}
             <div className="socials">
                 <a href="https://github.com/al4stur/" target="_blank" rel="noreferrer">
                     <img src="/icons/github-icon.svg" alt="GitHub" />
@@ -25,10 +25,25 @@ function App() {
                 </a>
             </div>
 
-            {/* Buttons */}
             <div className="buttons">
-                <button onClick={() => window.location.href = '#about'}>About Me</button>
-                <button onClick={() => window.location.href = '#projects'}>Projects</button>
+                <button onClick={() => setShowAbout(true)}>About Me</button>
+                <button onClick={() => alert("Projects Coming Soon!")}>Projects</button>
+            </div>
+
+            {/* About Me Slide-in Panel */}
+            <div className={`about-panel ${showAbout ? "show" : ""}`}>
+                <button className="close-btn" onClick={() => setShowAbout(false)}>✕</button>
+                <h2>About Me</h2>
+                <p>
+                    I'm Alastaire Balin, a curious mind passionate about building beautiful interfaces,
+                    thoughtful experiences, and typing animations just for fun. 🚀
+                </p>
+                <p>
+                    I'm currently exploring React, refining my design sense, and slowly becoming besties with CSS.
+                </p>
+                <p>
+                    Fun fact: I can spend hours aligning pixels and not even realize it.
+                </p>
             </div>
         </div>
     );

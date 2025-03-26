@@ -34,16 +34,32 @@ function App() {
             <div className={`about-panel ${showAbout ? "show" : ""}`}>
                 <button className="close-btn" onClick={() => setShowAbout(false)}>✕</button>
                 <h2>About Me</h2>
-                <p>
-                    I'm Alastaire Balin, a curious mind passionate about building beautiful interfaces,
-                    thoughtful experiences, and typing animations just for fun. 🚀
-                </p>
-                <p>
-                    I'm currently exploring React, refining my design sense, and slowly becoming besties with CSS.
-                </p>
-                <p>
-                    Fun fact: I can spend hours aligning pixels and not even realize it.
-                </p>
+                <div className="about-profile-pic">
+                    <img src="/icons/pfp.png" alt="Alastaire Balin" />
+                </div>
+                <div className="about-content">
+                    <p>
+                        HEYY GUYS!! I'm Alastaire Balin, first-year student studying at Northeastern University,
+                        combined majoring in Computer Science and Business Administration. 
+                    </p>
+                    <p>
+                        Currently, I am learning more about web development and design. Soon to learn more about
+                        full-stack development.
+                    </p>
+                    <p>
+                        Outside of academics, I enjoy marathon running, going on matcha runs, and RAVING!
+                    </p>
+
+                    {/* Skills Section */}
+                    <div className="skills-section">
+                        <h2>Skills</h2>
+                        <div className="skills-grid">
+                            <div className="skill-item">
+                                <img src="/icons/icons8-java-500.svg" alt="Java" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     );

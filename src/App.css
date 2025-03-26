@@ -103,62 +103,136 @@ h1 {
 .about-panel {
     position: fixed;
     top: 0;
-    left: -100%;
+    left: 0;
     width: 100%;
     height: 100vh;
     background-color: #ffffff;
     color: #333;
     z-index: 2;
-    padding: 3rem;
+    padding: 4rem 2rem 2rem;
     box-sizing: border-box;
     overflow-y: auto;
     transition: transform 0.3s ease-out;
     display: flex;
     flex-direction: column;
     align-items: center;
-    visibility: hidden;  /* Hide panel by default */
-}
-
-/* Dark overlay */
-.about-panel::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5);
-    opacity: 0;
-    z-index: -1;
-    visibility: hidden;
-    transition: opacity 0.3s ease-out, visibility 0.3s ease-out;
-}
-
-.about-panel.show {
-    transform: translateX(100%);
-    visibility: visible;  /* Show panel when active */
-}
-
-.about-panel.show::before {
-    opacity: 1;
+    transform: translateX(-100%);
     visibility: visible;
+    overscroll-behavior: none;
+    -webkit-overflow-scrolling: touch;
+    background-attachment: fixed;
 }
 
+/* About profile picture */
+.about-profile-pic {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 1rem auto 2rem;
+    border: 3px solid #7a8b99;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;  /* Prevent shrinking */
+}
+
+.about-profile-pic img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* About content container */
+.about-content {
+    width: 100%;
+    max-width: 800px;
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Heading styles with underlines */
 .about-panel h2 {
-    margin-top: 1rem;
-    margin-bottom: 2rem;
     font-size: 36px;
-    color: #222;
+    color: #000000;
     text-align: center;
+    margin: 0 0 1.5rem 0;
+    width: 100%;
+    position: relative;
+    padding-bottom: 0.5rem;
+    display: inline-block;
+}
+
+.about-panel h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;  /* Fixed width instead of percentage */
+    height: 2px;
+    background-color: #7a8b99;
 }
 
 .about-panel p {
     margin-bottom: 1.5rem;
     line-height: 1.8;
     font-size: 18px;
-    color: #444;
+    color: #222222;
     max-width: 800px;
     text-align: center;
+}
+
+/* Skills section styles */
+.skills-section {
+    width: 100%;
+    margin-top: 2rem;
+    padding-bottom: 2rem;
+    text-align: center;
+}
+
+.skills-section h2 {
+    margin: 1rem 0;
+    font-size: 28px;
+    padding-bottom: 0.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+.skills-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;  /* Fixed width, slightly shorter than About Me */
+    height: 2px;
+    background-color: #7a8b99;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 2rem;
+    margin-top: 1.5rem;
+    padding: 0 1rem;
+}
+
+/* Remove the span styles since we're not using them anymore */
+.skill-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.skill-item img {
+    width: 60px;
+    height: 60px;
+    transition: transform 0.2s ease;
+}
+
+.skill-item:hover img {
+    transform: scale(1.1);
 }
 
 .close-btn {
@@ -169,14 +243,32 @@ h1 {
     border: none;
     font-size: 28px;
     cursor: pointer;
-    color: #333;
+    color: #000000;
     padding: 8px;
     transition: transform 0.2s ease;
     z-index: 3;
-    visibility: hidden;  /* Hide close button by default */
 }
 
-.about-panel.show + .close-btn,
-.about-panel.show .close-btn {
-    visibility: visible;  /* Show close button when panel is active */
+/* Dark overlay */
+.about-panel::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(242, 242, 242, 0.5);
+    opacity: 0;
+    z-index: -1;
+    visibility: hidden;
+    transition: opacity 0.3s ease-out, visibility 0.3s ease-out;
+}
+
+.about-panel.show {
+    transform: translateX(0);
+}
+
+.about-panel.show::before {
+    opacity: 1;
+    visibility: visible;
 }
